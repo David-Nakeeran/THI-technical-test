@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -15,12 +16,28 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  annotationPlugin
 );
 
 export default function NumericalBarChart({ data }) {
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: "y",
+    plugins: {
+      annotation: {
+        annotations: {
+          line1: {
+            type: "line",
+            xMin: 5,
+            xMax: 5,
+            borderColor: "rgb(255, 99, 132)",
+            borderWidth: 1,
+          },
+        },
+      },
+    },
   };
 
   const chartData = {
@@ -52,7 +69,7 @@ export default function NumericalBarChart({ data }) {
     }),
   };
   return (
-    <section className="w-full">
+    <section className="w-full h-96 flex justify-center mb-10">
       {data.length !== 0 ? <Bar data={chartData} options={options} /> : null}
     </section>
   );

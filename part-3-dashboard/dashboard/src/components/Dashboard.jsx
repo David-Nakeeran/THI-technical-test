@@ -233,18 +233,20 @@ export default function Dashboard({
         </button>
       </div>
       {tableNumericalData && (
-        <>
-          <NumericalTable
-            tableNumericalData={tableNumericalData}
-            activeParent={activeParent}
-          />
-          <NumericalBarChart data={tableNumericalData} />
+        <div>
+          <div>
+            <NumericalTable
+              tableNumericalData={tableNumericalData}
+              activeParent={activeParent}
+            />
+            <NumericalBarChart data={tableNumericalData} />
+          </div>
           <CommentsAccordion
             commentsData={commentsData}
             onToggle={toggleAccordion}
             openIndexes={openIndexes}
           />
-        </>
+        </div>
       )}
     </section>
   );
