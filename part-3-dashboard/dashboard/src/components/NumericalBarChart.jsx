@@ -21,26 +21,30 @@ ChartJS.register(
 export default function NumericalBarChart({ data }) {
   const options = {
     responsive: true,
-    scales: {
-      x: {
-        stacked: true,
-      },
-      y: {
-        stacked: true,
-      },
-    },
   };
 
   const chartData = {
     datasets: [
       {
+        label: "Min Score",
+        data: data.map((item) => {
+          return Number(item.minScore);
+        }),
+        backgroundColor: "rgba(156, 163, 175, 0.6)",
+      },
+      {
         label: "Average Score",
         data: data.map((item) => {
           return Number(item.averageScore);
         }),
-        backgroundColor: "rgba(243, 226, 53, 0.7)",
-        borderColor: "rgba(43, 41, 53, 1)",
-        borderWidth: 1,
+        backgroundColor: "rgba(243, 226, 53, 0.8)",
+      },
+      {
+        label: "Max Score",
+        data: data.map((item) => {
+          return Number(item.maxScore);
+        }),
+        backgroundColor: "rgba(34, 197, 94, 0.6)",
       },
     ],
     labels: data.map((item) => {
